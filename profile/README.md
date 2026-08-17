@@ -36,3 +36,10 @@ We are fully open to contributions. If you would like to help, read the [contrib
 ## Community
 
 We want to grow by delegating responsibility, not by concentrating decisions in a handful of people. If you want to become a contributor, get in touch.
+
+---
+
+## Contributors
+
+<!-- CONTRIBUTORS-START -->
+<!-- CONTRIBUTORS-END -->
