@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulsar OS Contributors</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 { text-align: center; font-size: 2rem; margin-bottom: 8px; }
+    .subtitle { text-align: center; color: #8b949e; margin-bottom: 40px; font-size: 0.95rem; }
+    .stats { text-align: center; margin-bottom: 40px; color: #8b949e; font-size: 0.85rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 20px 12px;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: #966ce8; }
+    .card a { text-decoration: none; color: inherit; }
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    .name { font-weight: 600; font-size: 0.9rem; color: #e6edf3; }
+    .commits { color: #8b949e; font-size: 0.8rem; margin-top: 4px; }
+    .footer { text-align: center; margin-top: 50px; color: #484f58; font-size: 0.8rem; }
+    .footer a { color: #966ce8; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contributors</h1>
+    <p class="subtitle">People who have contributed to Pulsar OS</p>
+    <div class="stats" id="stats"></div>
+    <div class="grid" id="grid"></div>
+    <div class="footer">
+      Updated automatically via <a href="https://github.com/Inled-Pulsar-OS/.github">GitHub Actions</a>
+    </div>
+  </div>
+  <script>
+    fetch("contributors.json")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("stats").textContent =
+          data.totalContributors + " contributors · Last updated: " +
+          new Date(data.lastUpdated).toLocaleDateString();
+        const grid = document.getElementById("grid");
+        data.contributors
+          .sort((a, b) => b.contributions - a.contributions)
+          .forEach(c => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML =
+              '<a href="' + c.profile + '" target="_blank">' +
+              '<img class="avatar" src="' + c.avatar_url + '?s=128&v=4" alt="@' + c.login + '" loading="lazy">' +
+              '<div class="name">@' + c.login + '</div>' +
+              '<div class="commits">' + c.contributions + ' contributions</div>' +
+              '</a>';
+            grid.appendChild(card);
+          });
+      });
+  </script>
+</body>
+</html>
