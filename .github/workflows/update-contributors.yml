@@ -7,12 +7,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 jobs:
   update-contributors:
@@ -34,7 +28,7 @@ jobs:
           chmod +x .github/scripts/merge-contributors.sh
           .github/scripts/merge-contributors.sh profile/README.md
 
-      - name: Commit changes
+      - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -44,42 +38,16 @@ jobs:
             git push
           fi
 
-      - name: Publish contributors to website
+      - name: Notify Discord
+        if: success()
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          if [ -f "contributors.json" ]; then
-            CONTENT=$(cat contributors.json)
-            echo "$CONTENT" > /tmp/contributors-payload.json
-
-            echo "Publishing contributors data to os.inled.es..."
-            curl -s -X POST \
-              -H "Content-Type: application/json" \
-              -d @/tmp/contributors-payload.json \
-              "https://os.inled.es/api/contributors" || echo "Warning: website publish failed (non-critical)"
-
-            echo "Notifying Discord..."
-            TOTAL=$(echo "$CONTENT" | jq -r '.totalContributors')
-            UPDATED=$(echo "$CONTENT" | jq -r '.lastUpdated')
+          if [ -f "contributors.json" ] && [ -n "$DISCORD_WEBHOOK" ]; then
+            TOTAL=$(jq -r '.totalContributors' contributors.json)
+            UPDATED=$(jq -r '.lastUpdated' contributors.json)
             curl -s -X POST \
               -H "Content-Type: application/json" \
               -d '{"content":"📊 Weekly contributors update: **'"$TOTAL"'" contributors as of '"$UPDATED"'"}' \
-              "$DISCORD_WEBHOOK" || echo "Warning: Discord notification failed (non-critical)"
+              "$DISCORD_WEBHOOK" || true
           fi
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-  deploy:
-    name: deploy to GitHub Pages
-    needs: update-contributors
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
