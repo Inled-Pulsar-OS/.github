@@ -42,4 +42,9 @@ We want to grow by delegating responsibility, not by concentrating decisions in 
 ## Contributors
 
 <!-- CONTRIBUTORS-START -->
+Updated: `2026-08-17T10:17:49Z` · Total: **3** contributors
+
+<div align="center">
+<table width="100%"><tr><td align="center" width="14%" style="padding:8px 0"><a href="https://github.com/jaimegh-es" target="_blank"><img src="https://avatars.githubusercontent.com/u/200265524?v=4?s=80&v=4" width="50" alt="@jaimegh-es" loading="lazy" style="border-radius:50%"><br><sub><b>@jaimegh-es</b></sub></a></td><td align="center" width="14%" style="padding:8px 0"><a href="https://github.com/Victor1890" target="_blank"><img src="https://avatars.githubusercontent.com/u/46900196?v=4?s=80&v=4" width="50" alt="@Victor1890" loading="lazy" style="border-radius:50%"><br><sub><b>@Victor1890</b></sub></a></td><td align="center" width="14%" style="padding:8px 0"><a href="https://github.com/github-actions[bot]" target="_blank"><img src="https://avatars.githubusercontent.com/in/15368?v=4?s=80&v=4" width="50" alt="@github-actions[bot]" loading="lazy" style="border-radius:50%"><br><sub><b>@github-actions[bot]</b></sub></a></td><td></td><td></td><td></td></tr></table>
+</div>
 <!-- CONTRIBUTORS-END -->
