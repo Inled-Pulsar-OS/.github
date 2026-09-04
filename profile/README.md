@@ -10,9 +10,12 @@
 
 ---
 
-Pulsar OS is an innovative Linux distribution that seeks to offer the same functionality as popular operating systems on the market (such as MacOS) without replicating just the appearance: including the same and better functionalities.
-It is developed by the community and we will be happy for you to stop by our Discord or Telegram to talk to us.
-You can contribute whatever you want and we can resolve any questions or suggestions you may have.
+Pulsar OS is an innovative Linux distribution that seeks to offer the same functionality as popular operating systems on the market (such as MacOS) without replicating just the appearance: including the same and better functionalities.  
+
+It is developed by the community and we will be happy for you to stop by our Discord or Telegram to talk to us.  
+
+You can contribute whatever you want and we can resolve any questions or suggestions you may have.  
+
 This is the Linux distro as they should all be: with a friendly community that strives to understand the user's point of view and offer what matters most to them from mainstream systems and that is completely auditable and open source.
 Welcome!
 
@@ -20,11 +23,12 @@ Welcome!
 
 ## Editions  
 Pulsar OS has different editions or also called flavors, designed for a type of market/need/user group. There are several planned, currently we are focused on:
-- **Bitten frit** MacOS's competition, but it's yours
+- **Bitten fruit** MacOS's competition, but it's yours
 
 ---
 ## Bases  
-We usually offer two types of bases for systems: one stable and one more for geeks.
+We usually offer two types of bases for systems: one stable and one more for geeks.  
+
 Bitten Fruit offers:
 - Arch
 - Debian
